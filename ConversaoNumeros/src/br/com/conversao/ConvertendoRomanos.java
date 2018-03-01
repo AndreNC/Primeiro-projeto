@@ -76,5 +76,29 @@ public class ConvertendoRomanos {
             }
         }
         
+        Scanner ler = new Scanner(System.in);
+        System.out.println("Insira um número romano: ");
+        String romano = ler.nextLine();
+        
+        char Rom[] = {' ','I', 'V','X','L','C','D','M'};
+        int valor[] = {0,1,5,10,50,100,500,1000};
+        int ant = 0;
+        int soma = 0;
+        char letra = ' ';
+        for (int i = 0; i < romano.length(); i++) {
+            letra = romano.charAt(i);
+            for (int j = 0; j < Rom.length; j++) {
+                if(letra == Rom[j]){
+                    soma = soma + valor [j];
+                    if(ant < valor[j]){
+                        soma = soma - ant*2;
+                        ant = valor[j];
+                    }
+                }
+            }
+            
+        }
+        System.out.println(soma);
+        
     }   
 }
