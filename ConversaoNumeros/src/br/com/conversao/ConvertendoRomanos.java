@@ -9,75 +9,46 @@ import java.util.Scanner;
  */
 public class ConvertendoRomanos {
     public static void main(String[] args) {
-        int unidade, dezena, centena, milhar, numero, temp =0;
-        String [] unidadex = {"I","II","III","IV","V","VI","VII","VII","IX"}; //Array de tamnaho 9 . 0,1,2,3,4,5,6,7,8
-        String [] dezenax = {"X","XX","XXX","XL","L","LX","LXX","LXXX","'XC"};
-        String [] centenax = {"C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
-        String [] milharx =  {"M", "MM", "MMM"};      
         
-        Scanner entrada = new Scanner(System.in);
+        String opcao; 
         
-        System.out.println("Convertendo números arabicos em romanos de 1 até 3999");
-        System.out.println("=======================================================");
-        System.out.println("Insira um número para converter");
-        numero = entrada.nextInt();
         
-        unidade = numero % 10;
-        numero /= 10;
+        Scanner escolher = new Scanner(System.in);
         
-        dezena = numero % 10;
-        numero/= 10;
+        System.out.println("Escolha entre opção 'a' converter de arábicos para romanos ou opção 'b' de romanos para arábicos: ");
+       
+        opcao = escolher.nextLine();
         
-        centena = numero % 10;
-        numero/= 10;
         
-        milhar = numero % 10;
-        numero/= 10;
-        System.out.println();
-        System.out.println("Resultados em romanos: ");
+        if("a".equals(opcao) ){
+             
+        Scanner teclado = new Scanner(System.in);
+        int numero, k;
+        int vaNum[]= {1000,900,500,400,100,90,50,40,10,9,5,4,1};
+        String vaRom[]={"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"};
         
-        for (int i = 0; i < milharx.length; i++) {
-            if(milhar == 3){
-                System.out.println(milharx[2]);
+        while(true){
+            System.out.println("Insira um número arábico para conveter em romano: ");
+            numero = teclado.nextInt();
+            if(numero==0)
                 break;
-            }else if (milhar == i && milhar != 0){
-                temp = i - 1;
-                System.out.println(milharx[temp]);
+            System.out.printf("%-4d", numero);
+            k=0;
+            while(numero>0){
+                if(numero>=vaNum[k]){
+                    System.out.println(vaRom[k]);
+                    numero=numero - vaNum[k];
+                }
+                else
+                    k++;
             }
+            System.out.println();
+            break;
         }
-        
-        for (int i = 0; i < centenax.length; i++) {
-            if(centena == 9){
-                System.out.println(centenax[8]);
-                break;
-            }else if (centena == i && centena != 0){
-                temp = i - 1;
-                System.out.println(centenax[temp]);
-            }
-        }
-        
-        for (int i = 0; i < dezenax.length; i++) {
-            if(dezena == 9){
-                System.out.println(dezenax[8]);
-                break;
-            }else if (dezena == i && dezena != 0){
-                temp = i - 1;
-                System.out.println(dezenax[temp]);
-            }
-        }
-        
-        for (int i = 0; i < unidadex.length; i++) {
-            if(unidade == 9){
-                System.out.println(unidadex[8]);
-                break;
-            }else if (unidade == i && unidade != 0){
-                temp = i - 1;
-                System.out.println(unidadex[temp]);
-            }
-        }
-        
+        }else if ("b".equals(opcao)){
+             
         Scanner ler = new Scanner(System.in);
-        System.out.println("Insira um número romano: ");
+        System.out.println("Insira um número romano para converter em arabico: ");
         String romano = ler.nextLine();
         
         char Rom[] = {' ','I', 'V','X','L','C','D','M'};
@@ -99,6 +70,6 @@ public class ConvertendoRomanos {
             
         }
         System.out.println(soma);
-        
+        }      
     }   
 }
