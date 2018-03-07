@@ -36,13 +36,13 @@ public class ConvertendoRomanos {
             k=0;
             while(numero>0){
                 if(numero>=vaNum[k]){
-                    System.out.println(vaRom[k]);
+                    System.out.println(vaRom [k]);
                     numero=numero - vaNum[k];
                 }
                 else
                     k++;
             }
-            System.out.println();
+            
             break;
         }
         }else if ("b".equals(opcao)){
@@ -70,6 +70,8 @@ public class ConvertendoRomanos {
             
         }
         System.out.println(soma);
+        }else{
+            System.out.println("Opção inválida!");
         }      
     }   
 }
